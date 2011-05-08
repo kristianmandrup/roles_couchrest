@@ -1,0 +1,8 @@
+require 'roles_generic'
+require 'require_all'    
+require 'set'
+require 'sugar-high/array'
+require 'rails'
+require 'roles_couchrest/namespaces'
+require 'roles_couchrest/base'
+require 'roles_couchrest/strategy'

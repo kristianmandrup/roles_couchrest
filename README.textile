@@ -1,0 +1,51 @@
+h2. Roles CouchRest
+
+Implements the "Roles Generic":http://github.com/kristianmandrup/roles_generic for "CouchRest":https://github.com/mattetti/couchrest  
+
+See "CouchRest CouchDB close to the metal":http://www.rubyinside.com/couchrest-couchdb-close-to-the-metal-2358.html and "CouchDB with CouchRest in 5 minutes":http://merbist.com/2009/05/17/couchdb-with-couchrest-in-5-minutes/
+
+
+Generic Role strategies implemented:
+
+Single role:
+
+* admin_flag
+* role_string
+* one_role
+
+Multiple roles:
+
+* many_roles
+* roles_mask
+* role_strings           
+
+h2. Install
+
+<code>gem install roles_couchrest</code>
+
+h2. Use in Rails 3
+
+in Gemfile
+<code>
+  gem 'roles_couchrest'
+</code>
+
+Run <code>$ bundle install</code> 
+
+h2. Usage
+
+See Roles Generic API README and the specs included. 
+
+h2. Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+h2. Copyright
+
+Copyright (c) 2010 Kristian Mandrup. See LICENSE for details.
