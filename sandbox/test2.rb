@@ -1,7 +1,7 @@
 require 'rspec/core'
 require 'rails' 
 require 'simply_stored/couch'
-require 'roles_simply_stored'
+require 'roles_couchrest'
 require 'couchrest' 
 
 server = CouchRest::Server.new #'localhost:5984'

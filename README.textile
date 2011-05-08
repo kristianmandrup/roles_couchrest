@@ -4,6 +4,7 @@ Implements the "Roles Generic":http://github.com/kristianmandrup/roles_generic f
 
 See "CouchRest CouchDB close to the metal":http://www.rubyinside.com/couchrest-couchdb-close-to-the-metal-2358.html and "CouchDB with CouchRest in 5 minutes":http://merbist.com/2009/05/17/couchdb-with-couchrest-in-5-minutes/
 
+See sandbox/test_db_conn.rb for example.
 
 Generic Role strategies implemented:
 
