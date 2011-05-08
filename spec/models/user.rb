@@ -13,5 +13,7 @@ class User < CouchRest::ExtendedDocument
   property :gender
   property :address, :cast_as => 'Address'
   
+  # property :questions,      :cast_as => ['Question']
+  
   validates_present :name, :email
 end

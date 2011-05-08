@@ -13,8 +13,6 @@ end
 class Role
   include SimplyStored::Couch
 
-  has_many :users, :dependent => :destroy
-
   property :name, :type => String
     
   class << self

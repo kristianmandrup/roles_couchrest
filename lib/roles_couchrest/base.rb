@@ -15,12 +15,6 @@ module Roles::SimplyStored
     
     MAP = {
       :admin_flag   => "property :admin_flag, :type => :boolean",
-      # :many_roles   => "references_many :many_roles, :stored_as => :array, :class_name => 'Role', :default => []",
-      # :one_role     => "references_one :one_role, :class_name => 'Role'",
-
-      # :embed_many_roles   => "many :many_roles, :class_name => 'Role'",
-      # :embed_one_role     => "one :one_role, :class_name => 'Role'",
-
       :roles_mask   => "property :roles_mask, :type => Integer, :default => 0",
       :role_string  => "property :role_string,   :type => String",
       :role_strings => "property :role_strings,  :type => Array",
@@ -33,7 +27,7 @@ module Roles::SimplyStored
       end
 
       if !options.kind_of? Symbol
-        role_class = options[:role_class] ? options[:role_class].to_s.camelize.constantize : (Role if defined? Role)
+        role_class = options[:role_class] ? options[:role_class].to_s.camelize.constantize : (Role if defined? Role)        
       end
       puts "set_role_strategy: #{name}, #{options}"
       set_role_strategy name, options

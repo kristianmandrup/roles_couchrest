@@ -1,11 +1,5 @@
 require 'roles_couchrest/strategy/multi'
 
-class UserRole
-  include SimplyStored::Couch  
-  belongs_to :user
-  belongs_to :role
-end
-
 module RoleStrategy::SimplyStored
   module ManyRoles
     def self.default_role_attribute
@@ -15,11 +9,7 @@ module RoleStrategy::SimplyStored
     def self.included base
       base.extend Roles::Generic::Role::ClassMethods
       base.extend ClassMethods
-      base.has_many :user_roles, :foreign_key => 'role'
-      base.has_many :users, :through => :user_roles
-      
-      # base.has_many :many_roles, :through => :user_roles, :foreign_key => :role
-      # base.has_many :user_roles      
+      base.property :roles, :cast_as => ['Role']
     end
 
     module ClassMethods  

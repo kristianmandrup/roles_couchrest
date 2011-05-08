@@ -6,6 +6,58 @@ See "CouchRest CouchDB close to the metal":http://www.rubyinside.com/couchrest-c
 
 See sandbox/test_db_conn.rb for example.
 
+See "view_objects":http://www.couchrest.info/model/view_objects.html for how to Query
+
+<pre>
+design do
+  view :by_title
+  view :by_posted_at_and_title
+  view :tag_list,
+    :map =>
+      "function(doc) {
+        if (doc['model'] == 'Post' && doc.tags) {
+          doc.tags.forEach(function(tag){
+            emit(doc.tag, 1);
+          });
+        }
+      }",
+    :reduce =>
+      "function(keys, values, rereduce) {
+        return sum(values);
+      }"
+end
+
+# Prepare a query:
+view = Post.by_posted_at_and_title.skip(5).limit(10)
+
+# Fetch the results:
+view.each do |post|
+  puts "Title: #{post.title}"
+end
+
+# Grab the CouchDB result information with the same object:
+view.total_rows   => 10
+view.offset       => 5
+
+# Re-use and add new filters
+filter = view.startkey([1.month.ago]).endkey([Date.current, {}])
+
+# Fetch row results without the documents:
+filter.rows.each do |row|
+  puts "Row value: #{row.value} Doc ID: #{row.id}"
+end
+
+# Lazily load documents (take last row from previous example):
+row.doc      => Fetch last Post document from database
+
+# Using reduced queries is also easy:
+tag_usage = Post.tag_list.reduce.group_level(1)
+tag_usage.rows.each do |row|
+  puts "Tag: #{row.key}  Uses: #{row.value}"
+end
+</pre>
+
+
 Generic Role strategies implemented:
 
 Single role:

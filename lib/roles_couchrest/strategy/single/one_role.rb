@@ -11,7 +11,7 @@ module RoleStrategy::SimplyStored
     def self.included base
       base.extend Roles::Generic::Role::ClassMethods
       base.extend ClassMethods
-      base.belongs_to :one_role, :class_name => 'Role'
+      base.property :one_role, :cast_as => 'Role'
     end
 
     module ClassMethods 
